@@ -1,6 +1,7 @@
 dbs/
 *.db
 config.yaml
+config/
 *.gem
 *.rbc
 /.config

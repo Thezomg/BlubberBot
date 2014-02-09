@@ -1,8 +1,9 @@
-require 'cinch'
-require 'sequel'
+require_relative '../utils/plugin.rb'
+require 'yaml'
 
 class Tell
     include Cinch::Plugin
+    include Cinch::ConfPlugin
 
     listen_to :message
     match /tell (\S+) (.+)/
@@ -53,7 +54,8 @@ class Tell
 
     def initialize(*args)
         super
-        @db = Sequel.connect('sqlite://dbs/tell.db')
+
+        @db = get_db
         @db.create_table? :messages do
             primary_key :id
             String :nick
