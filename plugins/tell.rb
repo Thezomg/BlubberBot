@@ -53,7 +53,7 @@ class Tell
 
     def initialize(*args)
         super
-        @db = Sequel.connect('sqlite://dbs/database.db')
+        @db = Sequel.connect('sqlite://dbs/tell.db')
         @db.create_table? :messages do
             primary_key :id
             String :nick
