@@ -1,5 +1,5 @@
 require 'cinch'
-require './plugins/tell.rb'
+require_relative './lib/blubber'
 require 'yaml'
 
 bot = Cinch::Bot.new do
@@ -13,7 +13,7 @@ bot = Cinch::Bot.new do
             c.server = 'irc.gamesurge.net'
             c.channels = ['#llama5']
             #c.verbose = true
-            c.plugins.plugins = [Tell]
+            c.plugins.plugins = [Cinch::Plugins::Tell]
             File.open('config.yaml', 'w') { |fo| fo.puts c.to_h.to_yaml }
             abort("Config doesn't exist, creating config.yaml")
         end
